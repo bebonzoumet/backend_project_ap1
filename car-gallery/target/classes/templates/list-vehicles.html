@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Veículos</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1>Veículos da Marca <span th:text="${brand.name}"></span></h1>
+    <div class="vehicle-list">
+        <div th:each="vehicle : ${listVehicles}" class="vehicle-card">
+            <img th:src="${vehicle.image}" alt="Imagem do veículo">
+            <div class="vehicle-details">
+                <h3 th:text="${vehicle.model}"></h3>
+                <p>ID: <span th:text="${vehicle.id}"></span></p>
+                <p>Tipo: <span th:text="${vehicle.type}"></span></p>
+                <p>Potência: <span th:text="${vehicle.power}"></span></p>
+                <p>Nível de Segurança: <span th:text="${vehicle.safetyLevel}"></span></p>
+                <p>Data de Criação: <span th:text="${vehicle.dateCreation}"></span></p>
+                <p>Descrição: <span th:text="${vehicle.description}"></span></p>
+            </div>
+            <div class="vehicle-actions">
+                <a th:href="@{'/vehicle/editVehicle/' + ${brand.id} + '/' + ${vehicle.id}}"><button class="edit">Editar</button></a>
+                <a th:href="@{'/vehicle/deleteVehicle/' + ${brand.id} + '/' + ${vehicle.id}}"><button class="delete">Deletar</button></a>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{'/vehicle/createVehicle/' + ${brand.id}}"><button>Criar Novo Veículo</button></a>
+    <a th:href="@{'/brand'}"><button class="create">Voltar</button></a>
+</body>
+</html>

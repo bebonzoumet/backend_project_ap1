@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Novo Veículo</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1>Criar Novo Veículo</h1>
+    <form th:action="@{/vehicle/saveVehicle/{brandId}(brandId=${brand.id})}" method="post" th:object="${vehicle}">
+        <div>
+            <label for="model">Modelo:</label>
+            <input type="text" id="model" th:field="*{model}" name="model" required>
+            <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="type">Tipo:</label>
+            <input type="text" id="type" th:field="*{type}" name="type" required>
+            <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="power">Potência:</label>
+            <input type="text" id="power" th:field="*{power}" name="power" required>
+            <span th:if="${#fields.hasErrors('power')}" th:errors="*{power}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="safetyLevel">Nível de Segurança:</label>
+            <input type="text" id="safetyLevel" th:field="*{safetyLevel}" name="safetyLevel" required>
+            <span th:if="${#fields.hasErrors('safetyLevel')}" th:errors="*{safetyLevel}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="dateCreation">Data de Criação:</label>
+            <input type="text" id="dateCreation" th:field="*{dateCreation}" name="dateCreation" required>
+            <span th:if="${#fields.hasErrors('dateCreation')}" th:errors="*{dateCreation}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="description">Descrição:</label>
+            <div>
+                <textarea id="description" th:field="*{description}" name="description" required></textarea>
+            </div>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="image">Imagem:</label>
+            <input type="text" id="image" th:field="*{image}" name="image" required>
+            <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="form-error"></span>
+        </div>
+        <button type="submit">Criar Veículo</button>
+    </form>
+    <a th:href="@{'/vehicle/listVehicles/' + ${brand.id}}"><button class="create">Voltar</button></a>
+</body>

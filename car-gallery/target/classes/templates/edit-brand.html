@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Marca</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1>Editar Marca</h1>
+    <form th:action="@{/brand/updateBrand/{id}(id=${brand.id})}" method="post" th:object="${brand}">
+        <div>
+            <label for="name">Nome da Marca:</label>
+            <input type="text" id="name" th:field="*{name}" name="name" required>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="country">País:</label>
+            <input type="text" id="country" th:field="*{country}" name="country" required>
+            <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="form-error"></span>
+        <div>
+        <div>
+            <label for="founder">Fundador:</label>
+            <input type="text" id="founder" th:field="*{founder}" name="founder" required>
+            <span th:if="${#fields.hasErrors('founder')}" th:errors="*{founder}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="dateCreation">Data de Criação:</label>
+            <input type="text" id="dateCreation" th:field="*{dateCreation}" name="dateCreation" required>
+            <span th:if="${#fields.hasErrors('dateCreation')}" th:errors="*{dateCreation}" class="form-error"></span>
+        </div>
+        <div>
+            <label for="description">Descrição:</label>
+            <div>
+                <textarea id="description" th:field="*{description}" name="description" required></textarea>
+            </div>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="form-error"></span>
+        </div>
+            <button type="submit">Editar Marca</button>
+        </div>
+    </form>
+    <a th:href="@{'/brand'}"><button class="create">Voltar</button></a>
+</body>
+</html>

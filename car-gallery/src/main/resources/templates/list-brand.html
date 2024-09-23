@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Marcas</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <h1>Lista de Marcas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>País</th>
+                <th>Fundador</th>
+                <th>Data de criação</th>
+                <th>Descrição</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="brand : ${listBrands}">
+                <td th:text="${brand.id}"></td>
+                <td th:text="${brand.name}"></td>
+                <td th:text="${brand.country}"></td>
+                <td th:text="${brand.founder}"></td>
+                <td th:text="${brand.dateCreation}"></td>
+                <td th:text="${brand.description}"></td>
+                <td>
+                    <a th:href="@{'/brand/editBrand/' + ${brand.id}}"><button>Editar</button></a>
+                    <a th:href="@{'/brand/deleteBrand/' + ${brand.id}}"><button>Deletar</button></a>
+                    <a th:href="@{'/vehicle/listVehicles/' + ${brand.id}}"><button class="view">Ver Veículos</button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{'/brand/createBrand'}"><button>Criar Nova Marca</button></a>
+</body>
+</html>
