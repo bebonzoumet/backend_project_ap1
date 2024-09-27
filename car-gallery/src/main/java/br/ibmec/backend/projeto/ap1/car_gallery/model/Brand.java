@@ -3,7 +3,7 @@ package br.ibmec.backend.projeto.ap1.car_gallery.model;
 import java.util.List;
 
 import lombok.Data;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,7 +43,7 @@ public class Brand {
     @NotEmpty(message = "O campo de descrição do fabricante não pode ser vazio!")
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(referencedColumnName = "id", name = "brand_id")
     private List<Vehicle> vehicles;
 }
