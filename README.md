@@ -1,2 +1,2 @@
-rodar a partir da pasta do projeto
-versão do java 21
+#rodar a partir da pasta do projeto
+#versão do java 21
